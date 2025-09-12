@@ -53,35 +53,36 @@ No diretório onde o cdk.json do seu projeto está localizado:
 cdk bootstrap # Se esta for a primeira vez que você usa o CDK em sua conta/região
 cdk deploy
 
-**Estrutura do Projeto**
+## Estrutura do Projeto
 A estrutura do projeto será organizada da seguinte forma:
-.
-├── examples/                      # Diretório para diferentes exemplos e projetos
-│   ├── hello-world-lambda/        # Exemplo de uma função Lambda simples
-│   │   ├── src/                   # Código fonte da função Lambda
-│   │   │   └── handler.ts
-│   │   ├── lib/                   # Definição da stack CDK para este exemplo
-│   │   │   └── hello-world-stack.ts
-│   │   ├── cdk.json               # Configuração do CDK para este exemplo
-│   │   ├── package.json
-│   │   └── tsconfig.json
-│   └── another-example/           # Outro exemplo de projeto serverless
-│       └── ...
-├── docs/                          # Documentação adicional
-├── .github/                       # Configurações do GitHub (workflows, issues templates)
+
+├── examples/ # Diretório para diferentes exemplos e projetos
+│ ├── hello-world-lambda/ # Exemplo de uma função Lambda simples
+│ │ ├── src/ # Código fonte da função Lambda
+│ │ │ └── handler.ts
+│ │ ├── lib/ # Definição da stack CDK para este exemplo
+│ │ │ └── hello-world-stack.ts
+│ │ ├── cdk.json # Configuração do CDK para este exemplo
+│ │ ├── package.json
+│ │ └── tsconfig.json
+│ └── another-example/ # Outro exemplo de projeto serverless
+│ └── ...
+├── docs/ # Documentação adicional
+├── .github/ # Configurações do GitHub (workflows, issues templates)
 ├── .gitignore
 ├── README.md
-├── package.json                   # Dependências gerais do repositório (se houver)
+├── package.json # Dependências gerais do repositório (se houver)
 └── tsconfig.json
 
-**Exemplos**
-Você encontrará vários exemplos práticos no diretório examples/, incluindo:
-hello-world-lambda: Uma função Lambda "Olá, Mundo!" simples exposta via API Gateway.
-crud-api-dynamodb: Uma API RESTful para operações CRUD com DynamoDB.
-s3-event-processor: Uma função Lambda que processa eventos de upload de arquivos no S3.
 
-**Contribuindo**
+## Exemplos
+Você encontrará vários exemplos práticos no diretório `examples/`, incluindo:
+- **`hello-world-lambda`**: Uma função Lambda "Olá, Mundo!" simples exposta via API Gateway.
+- **`crud-api-dynamodb`**: Uma API RESTful para operações CRUD com DynamoDB.
+- **`s3-event-processor`**: Uma função Lambda que processa eventos de upload de arquivos no S3.
+
+## Contribuindo
 Contribuições são muito bem-vindas! Sinta-se à vontade para abrir issues para reportar bugs, sugerir melhorias ou enviar pull requests com novos exemplos ou funcionalidades.
 
-**Licença**
-Este projeto está licenciado sob a licença MIT.
+## Licença
+Este projeto está licenciado sob a licença [MIT](LICENSE).
