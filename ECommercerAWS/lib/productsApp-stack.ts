@@ -17,15 +17,19 @@ export class ProductsAppStack extends cdk.Stack {
         super(scope, id, props);
 
         this.productsHandler = new lambdaNodeJS.NodejsFunction(this, 'ProductsHandler', {
+            runtime: lambda.Runtime.NODEJS_20_X,
+            memorySize: 512,
             functionName: 'ProductsFetchFunction',
             entry: 'lambda/products/productsFetchFunction.ts',
             handler: 'handler',
-            memorySize: 128,
-            timeout: cdk.Duration.seconds(5),
             bundling: {
                 minify: true,
                 sourceMap: false,
-            }
+            },
+            environment: {
+                //PRODUCTS_DDB: this.productsDdb.tableName,
+            },
+            timeout: cdk.Duration.seconds(10),
         })
     }
 }
