@@ -1,0 +1,9 @@
+Overview: We do not collect customer content and we anonymize the
+                  telemetry we do collect. See the attached issue for more
+                  information on what data is collected, why, and how to
+                  opt-out. Telemetry will NOT be collected for any CDK CLI
+                  version prior to version 2.1100.0 - regardless of
+                  opt-in/out. You can also preview the telemetry we will start
+                  collecting by logging it to a local file, by adding
+                  `--unstable=telemetry --telemetry-file=my/local/file` to any
+                  `cdk` command.
