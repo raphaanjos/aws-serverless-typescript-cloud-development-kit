@@ -6,6 +6,7 @@ import * as cdk from 'aws-cdk-lib';
 import * as dynamodb from 'aws-cdk-lib/aws-dynamodb';
 
 import { Construct } from 'constructs';
+import { Lambda } from 'aws-cdk-lib/aws-ses-actions';
 
 /**
  * A stack that defines the AWS resources for the Products App.
@@ -14,6 +15,7 @@ export class ProductsAppStack extends cdk.Stack {
 
     // productsHandler é uma função Lambda que será usada para lidar com as requisições relacionadas aos produtos
     readonly productsHandler: lambdaNodeJS.NodejsFunction;
+    readonly productsAdminHandler: lambdaNodeJS.NodejsFunction;
     readonly productsDdb: dynamodb.Table;
 
     // pros são propriedades que podem ser passadas para o construtor da stack
@@ -50,5 +52,22 @@ export class ProductsAppStack extends cdk.Stack {
         })
 
         this.productsDdb.grantReadData(this.productsHandler);
+
+        this.productsAdminHandler = new lambdaNodeJS.NodejsFunction(this, 'ProductsAdminFunction', {
+            runtime: lambda.Runtime.NODEJS_20_X,
+            memorySize: 512,
+            functionName: 'ProductsAdminFunction',
+            entry: 'lambda/products/productsAdminFunction.ts',
+            handler: 'handler',
+            bundling: {
+                minify: true,
+                sourceMap: false,
+            },
+            environment: {
+                PRODUCTS_DDB: this.productsDdb.tableName,
+            },
+            timeout: cdk.Duration.seconds(10),
+        })
+        this.productsDdb.grantReadWriteData(this.productsAdminHandler);
     }
 }
